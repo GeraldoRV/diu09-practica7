@@ -37,6 +37,7 @@ public class InternalWindow extends javax.swing.JInternalFrame {
     /**
      * Creates new form InternalWindow2
      */
+    
     public InternalWindow() {
         initComponents();
         
@@ -136,8 +137,18 @@ public class InternalWindow extends javax.swing.JInternalFrame {
     public void initializeProject(File file) {
         scrollPane.setPanel(file);
         scrollPane.repaint();
-        
         this.setTitle(file.getName());
+    }
+    /**
+     * Cosas pa probar
+     * @param file
+     * @param value 
+     */
+    public void nuew(BufferedImage file, int value) {
+        scrollPane.getPanel().setImage(file);
+        scrollPane.repaint();
+        
+        this.setTitle("" + value);
     }
     
     private void OpenMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpenMenuActionPerformed
@@ -196,10 +207,12 @@ public class InternalWindow extends javax.swing.JInternalFrame {
             BufferedImage img = scrollPane.getPanel().umbralizar(
                     scrollPane.getPanel().getImage(), 
                     jSlider.getValue());
-            
-            scrollPane.getPanel().setImage(img);
+            int a = jSlider.getValue();
+            DesktopPane papa = (DesktopPane) this.getDesktopPane();
+            papa.openAnotherFrame(img,a);
+           // scrollPane.getPanel().setImage(img);
 
-            scrollPane.getPanel().paintComponent(scrollPane.getPanel().getGraphics());
+            //scrollPane.getPanel().paintComponent(scrollPane.getPanel().getGraphics());
             //createInternalFrame(img);
         }
     }//GEN-LAST:event_thresholdMenuActionPerformed
