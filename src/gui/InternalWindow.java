@@ -191,22 +191,17 @@ public class InternalWindow extends javax.swing.JInternalFrame {
 
             InternalWindow internalWindow = new InternalWindow();
 
-            internalWindow.getScrollPane().getPanel().setImage(img);
-            internalWindow.getScrollPane().getPanel().paintComponent(internalWindow.getScrollPane().getPanel().getGraphics());
-            internalWindow.setTitle("Threshold: " + jSlider.getValue());
+            internalWindow.changeImage(img);
+            internalWindow.setTitle("Threshold : " + jSlider.getValue());
 
             DesktopPane desktop = (DesktopPane) this.getDesktopPane();
             desktop.openAnotherFrame(internalWindow);
-
-            // scrollPane.getPanel().setImage(img);
-            //scrollPane.getPanel().paintComponent(scrollPane.getPanel().getGraphics());
-            //createInternalFrame(img, jSlider.getValue());
-            //createInternalFrame(img);
         }
     }//GEN-LAST:event_thresholdMenuActionPerformed
 
-    private void createInternalFrame(BufferedImage img, int value) {
-
+    public void changeImage(BufferedImage img) {
+        scrollPane.setPanel(img);
+        scrollPane.repaint();
     }
 
     private void setDefaults() {
@@ -304,6 +299,7 @@ public class InternalWindow extends javax.swing.JInternalFrame {
         jSlider.setPaintTicks(true);
         jSlider.setPaintLabels(true);
         jSlider.setMaximum(255);
+        jSlider.setValue(128);
 
         JPanel jPanel = new JPanel(new GridLayout(0, 1));
         jPanel.add(new JLabel("Select a value : "));

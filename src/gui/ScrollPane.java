@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.swing.BorderFactory;
 import javax.swing.JScrollBar;
@@ -62,6 +63,11 @@ public class ScrollPane extends JScrollPane {
 
     public void setPanel(ImagePanel panel) {
         this.panel = panel;
+        showPaint();
+    }
+    
+    public void setPanel(BufferedImage img) {
+        panel.setImage(img);
         showPaint();
     }
     

@@ -23,7 +23,6 @@ public class DesktopPane extends JDesktopPane{
     public void openAnotherFrame(InternalWindow internalWindow){
         nVentanas++;
         internalWindow.setLocation(nVentanas*40, nVentanas*10);
-        //internalWindow.nuew(img, valor);
         
         add(internalWindow);
     }
