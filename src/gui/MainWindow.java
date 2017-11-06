@@ -126,7 +126,7 @@ public class MainWindow extends javax.swing.JFrame {
                         JOptionPane.ERROR_MESSAGE);
             } else {
                 // TODO: Esto te lo he añadido para realizar pruebas modificalo si quieres
-                desktopPane.test(fc.getSelectedFile());
+                desktopPane.openInternalFrame(fc.getSelectedFile());
             }
         }
     }//GEN-LAST:event_openMenuItemActionPerformed
@@ -139,8 +139,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
     private void closeMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeMenuItemActionPerformed
-        DesktopPane es = new DesktopPane();
-        es.closeAllFrames();
+        desktopPane.closeAllFrames();
     }//GEN-LAST:event_closeMenuItemActionPerformed
 
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed

@@ -35,6 +35,7 @@ public class InternalWindow extends javax.swing.JInternalFrame {
     /**
      * Creates new form InternalWindow2
      */
+    
     public InternalWindow() {
         initComponents();
         
@@ -127,14 +128,9 @@ public class InternalWindow extends javax.swing.JInternalFrame {
         return scrollPane;
     }
 
-    public List<InternalWindow> getInternalWindows() {
-        return internalWindows;
-    }
-    
     public void initializeProject(File file) {
         scrollPane.setPanel(file);
         scrollPane.repaint();
-        
         this.setTitle(file.getName());
     }
     
@@ -194,28 +190,28 @@ public class InternalWindow extends javax.swing.JInternalFrame {
             BufferedImage img = scrollPane.getPanel().umbralizar(
                     scrollPane.getPanel().getImage(), 
                     jSlider.getValue());
+            int a = jSlider.getValue();
             
-            //scrollPane.getPanel().setImage(img);
+           // scrollPane.getPanel().setImage(img);
 
             //scrollPane.getPanel().paintComponent(scrollPane.getPanel().getGraphics());
             createInternalFrame(img, jSlider.getValue());
+            //createInternalFrame(img);
         }
     }//GEN-LAST:event_thresholdMenuActionPerformed
     
     private void createInternalFrame(BufferedImage img, int value) {
-        internalWindows.add(new InternalWindow());
-        int last = internalWindows.size() -  1;
+        InternalWindow internalWindow = new InternalWindow();
         
-        internalWindows.get(last).getScrollPane().getPanel().setImage(img);
+        internalWindow.getScrollPane().getPanel().setImage(img);
+        internalWindow.getScrollPane().repaint();
         
-        internalWindows.get(last).getScrollPane().repaint();
+        DesktopPane desktop = (DesktopPane) this.getDesktopPane();
+            desktop.openAnotherFrame();
         
     }
     
-    
-    
     private void setDefaults() {
-        internalWindows = new ArrayList<>();
 
         this.setIconifiable(true);
         this.setMaximizable(true);
@@ -346,6 +342,4 @@ public class InternalWindow extends javax.swing.JInternalFrame {
     private javax.swing.JPopupMenu.Separator separatorMenu;
     private javax.swing.JMenuItem thresholdMenu;
     // End of variables declaration//GEN-END:variables
-    private List<InternalWindow> internalWindows;
-
 }
