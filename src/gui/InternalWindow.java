@@ -8,9 +8,7 @@ import java.awt.image.BufferedImage;
 import java.beans.PropertyVetoException;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -33,7 +31,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author david
  */
 public class InternalWindow extends javax.swing.JInternalFrame {
-
+    
     /**
      * Creates new form InternalWindow2
      */
@@ -197,25 +195,24 @@ public class InternalWindow extends javax.swing.JInternalFrame {
                     scrollPane.getPanel().getImage(), 
                     jSlider.getValue());
             
-            scrollPane.getPanel().setImage(img);
+            //scrollPane.getPanel().setImage(img);
 
-            scrollPane.getPanel().paintComponent(scrollPane.getPanel().getGraphics());
-            //createInternalFrame(img);
+            //scrollPane.getPanel().paintComponent(scrollPane.getPanel().getGraphics());
+            createInternalFrame(img, jSlider.getValue());
         }
     }//GEN-LAST:event_thresholdMenuActionPerformed
     
-    /*private void createInternalFrame(BufferedImage img) {
+    private void createInternalFrame(BufferedImage img, int value) {
         internalWindows.add(new InternalWindow());
-        int size = internalWindows.size() -  1;
+        int last = internalWindows.size() -  1;
         
-        internalWindows.get(size).getScrollPane().getPanel().setImage(img);
+        internalWindows.get(last).getScrollPane().getPanel().setImage(img);
         
-        internalWindows.get(size).getScrollPane().
-                getPanel().paintComponent(
-                        internalWindows.get(size).getScrollPane().
-                        getPanel().getGraphics());
+        internalWindows.get(last).getScrollPane().repaint();
         
-    }*/
+    }
+    
+    
     
     private void setDefaults() {
         internalWindows = new ArrayList<>();
