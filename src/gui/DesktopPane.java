@@ -15,16 +15,15 @@ public class DesktopPane extends JDesktopPane{
     }
     
 
-    public void openInternalFrame(File file) {
+    public void openInternalFrame(File file){
         internalWindow.initializeProject(file);
         this.add(internalWindow);
     }
     
-    public void openAnotherFrame(BufferedImage img, int valor){
-        internalWindow = new InternalWindow();
+    public void openAnotherFrame(InternalWindow internalWindow){
         nVentanas++;
         internalWindow.setLocation(nVentanas*40, nVentanas*10);
-        internalWindow.nuew(img, valor);
+        //internalWindow.nuew(img, valor);
         
         add(internalWindow);
     }

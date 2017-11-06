@@ -1,6 +1,5 @@
 package gui;
 
-
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -25,20 +24,18 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author david
  */
 public class InternalWindow extends javax.swing.JInternalFrame {
-    
+
     /**
      * Creates new form InternalWindow2
      */
-    
     public InternalWindow() {
         initComponents();
-        
+
         setDefaults();
     }
 
@@ -133,7 +130,7 @@ public class InternalWindow extends javax.swing.JInternalFrame {
         scrollPane.repaint();
         this.setTitle(file.getName());
     }
-    
+
     private void OpenMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpenMenuActionPerformed
         JFileChooser fc = new JFileChooser(System.getProperty("user.home"));
 
@@ -150,18 +147,19 @@ public class InternalWindow extends javax.swing.JInternalFrame {
                         "Error",
                         JOptionPane.ERROR_MESSAGE);
             } else {
-                if(scrollPane.setPanel(fc.getSelectedFile()) == ImagePanel.FAILURE)
+                if (scrollPane.setPanel(fc.getSelectedFile()) == ImagePanel.FAILURE) {
                     JOptionPane.showMessageDialog(
-                        null,
-                        "Cannot load the image. Please, try again!",
-                        "Error",
-                        JOptionPane.ERROR_MESSAGE);
-                
+                            null,
+                            "Cannot load the image. Please, try again!",
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+
                 scrollPane.repaint();
-                
+
                 closeMenu.setEnabled(true);
                 thresholdMenu.setEnabled(true);
-                
+
                 this.setTitle(fc.getName(fc.getSelectedFile()));
             }
         }
@@ -185,39 +183,39 @@ public class InternalWindow extends javax.swing.JInternalFrame {
     private void thresholdMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thresholdMenuActionPerformed
         JSlider jSlider = new JSlider();
 
-        if(generateThresholdWindow(jSlider) == JOptionPane.OK_OPTION) {
+        if (generateThresholdWindow(jSlider) == JOptionPane.OK_OPTION) {
 
             BufferedImage img = scrollPane.getPanel().umbralizar(
-                    scrollPane.getPanel().getImage(), 
+                    scrollPane.getPanel().getImage(),
                     jSlider.getValue());
-            int a = jSlider.getValue();
-            
-           // scrollPane.getPanel().setImage(img);
 
+            InternalWindow internalWindow = new InternalWindow();
+
+            internalWindow.getScrollPane().getPanel().setImage(img);
+            internalWindow.getScrollPane().getPanel().paintComponent(internalWindow.getScrollPane().getPanel().getGraphics());
+            internalWindow.setTitle("Threshold: " + jSlider.getValue());
+
+            DesktopPane desktop = (DesktopPane) this.getDesktopPane();
+            desktop.openAnotherFrame(internalWindow);
+
+            // scrollPane.getPanel().setImage(img);
             //scrollPane.getPanel().paintComponent(scrollPane.getPanel().getGraphics());
-            createInternalFrame(img, jSlider.getValue());
+            //createInternalFrame(img, jSlider.getValue());
             //createInternalFrame(img);
         }
     }//GEN-LAST:event_thresholdMenuActionPerformed
-    
+
     private void createInternalFrame(BufferedImage img, int value) {
-        InternalWindow internalWindow = new InternalWindow();
-        
-        internalWindow.getScrollPane().getPanel().setImage(img);
-        internalWindow.getScrollPane().repaint();
-        
-        DesktopPane desktop = (DesktopPane) this.getDesktopPane();
-            desktop.openAnotherFrame();
-        
+
     }
-    
+
     private void setDefaults() {
 
         this.setIconifiable(true);
         this.setMaximizable(true);
         this.setResizable(true);
         this.setClosable(true);
-        
+
         this.setVisible(true);
         this.setEnabled(true);
         this.setFocusable(true);
@@ -229,7 +227,7 @@ public class InternalWindow extends javax.swing.JInternalFrame {
         }
         this.show();
     }
-    
+
     private void setFilter(JFileChooser fc) {
         FileFilter filter = new FileNameExtensionFilter(
                 "All pictures",
@@ -300,34 +298,34 @@ public class InternalWindow extends javax.swing.JInternalFrame {
                 return false;
         }
     }
-    
+
     private int generateThresholdWindow(JSlider jSlider) {
         jSlider.setMajorTickSpacing(51);
         jSlider.setPaintTicks(true);
         jSlider.setPaintLabels(true);
         jSlider.setMaximum(255);
-        
+
         JPanel jPanel = new JPanel(new GridLayout(0, 1));
         jPanel.add(new JLabel("Select a value : "));
-        
+
         JPanel jPanel1 = new JPanel(new FlowLayout(FlowLayout.TRAILING, 15, 5));
         jPanel1.add(jSlider);
         JLabel jLabel = new JLabel(Integer.toString(jSlider.getValue()));
         jLabel.setFont(new Font("SansSerif", Font.BOLD, 16));
         jPanel1.add(jLabel);
-        
+
         jPanel.add(jPanel.add(jPanel1));
-        
+
         jSlider.addChangeListener((ChangeEvent e) -> {
             jLabel.setText(Integer.toString(jSlider.getValue()));
         });
-        
-        int res = JOptionPane.showConfirmDialog(rootPane, 
-                new JPanel[] {jPanel, jPanel1},
-                "Select a Threshold", 
+
+        int res = JOptionPane.showConfirmDialog(rootPane,
+                new JPanel[]{jPanel, jPanel1},
+                "Select a Threshold",
                 JOptionPane.OK_CANCEL_OPTION,
                 JOptionPane.PLAIN_MESSAGE);
-        
+
         return res;
     }
 
