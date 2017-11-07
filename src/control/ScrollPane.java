@@ -17,8 +17,6 @@ public class ScrollPane extends JScrollPane {
     private final JViewport view;
     private final JScrollBar hBar;
     private final JScrollBar vBar;
-    private Point origin;
-    private MainWindow main;
     
     public ScrollPane() {
         panel = new ImagePanel();
@@ -66,14 +64,6 @@ public class ScrollPane extends JScrollPane {
         
         showPaint();
         return ImagePanel.SUCCESS;
-    }
-
-    public MainWindow getMain() {
-        return main;
-    }
-
-    public void setMain(MainWindow main) {
-        this.main = main;
     }
     
     @Override
