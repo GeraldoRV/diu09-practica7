@@ -5,7 +5,6 @@
  */
 package gui;
 
-import java.awt.event.WindowEvent;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
