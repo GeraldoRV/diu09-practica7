@@ -38,7 +38,6 @@ public class InternalWindow extends javax.swing.JInternalFrame {
      */
     public InternalWindow() {
         initComponents();
-        child = new ArrayList();
         setDefaults();
     }
 
@@ -263,7 +262,8 @@ public class InternalWindow extends javax.swing.JInternalFrame {
     }
 
     private void setDefaults() {
-
+        child = new ArrayList();
+        
         this.setIconifiable(true);
         this.setMaximizable(true);
         this.setResizable(true);
