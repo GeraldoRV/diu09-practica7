@@ -107,7 +107,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="gui.DesktopPane" name="desktopPane">
+    <Container class="control.DesktopPane" name="desktopPane">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="true"/>

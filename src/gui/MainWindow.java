@@ -33,7 +33,7 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        desktopPane = new gui.DesktopPane();
+        desktopPane = new control.DesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -280,7 +280,7 @@ public class MainWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem closeMenuItem;
-    private gui.DesktopPane desktopPane;
+    private control.DesktopPane desktopPane;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

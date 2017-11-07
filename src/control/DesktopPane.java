@@ -1,5 +1,6 @@
-package gui;
+package control;
 
+import gui.InternalWindow;
 import java.beans.PropertyVetoException;
 import java.io.File;
 import java.util.ArrayList;

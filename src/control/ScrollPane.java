@@ -1,5 +1,7 @@
-package gui;
+package control;
 
+import gui.MainWindow;
+import model.ImagePanel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -27,18 +29,8 @@ public class ScrollPane extends JScrollPane {
         hBar = this.getHorizontalScrollBar();
         vBar = this.getVerticalScrollBar();
         view = this.getViewport();
-        origin = new Point(0, 0);
-        
-        hBar.addAdjustmentListener(barListener());
-        vBar.addAdjustmentListener(barListener());
         
         showPaint();
-    }
-    
-    private AdjustmentListener barListener() {
-        return (AdjustmentEvent e) -> {
-            System.out.println("Hola");
-        };
     }
 
     private void showPaint() {
