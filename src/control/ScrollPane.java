@@ -1,10 +1,8 @@
 package control;
 
-import gui.MainWindow;
 import model.ImagePanel;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.swing.BorderFactory;
