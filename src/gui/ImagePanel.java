@@ -1,4 +1,4 @@
-package model;
+package gui;
 
 import boofcv.alg.filter.binary.GThresholdImageOps;
 import boofcv.core.image.ConvertImage;

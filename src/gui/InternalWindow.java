@@ -1,8 +1,6 @@
 package gui;
 
-import control.ScrollPane;
 import control.DesktopPane;
-import model.ImagePanel;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -50,7 +48,7 @@ public class InternalWindow extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        scrollPane = new control.ScrollPane();
+        scrollPane = new gui.ScrollPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         OpenMenu = new javax.swing.JMenuItem();
@@ -390,7 +388,7 @@ public class InternalWindow extends javax.swing.JInternalFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem quitMenu;
-    private control.ScrollPane scrollPane;
+    private gui.ScrollPane scrollPane;
     private javax.swing.JPopupMenu.Separator separatorMenu;
     private javax.swing.JMenuItem thresholdMenu;
     // End of variables declaration//GEN-END:variables
