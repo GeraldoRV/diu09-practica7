@@ -60,6 +60,7 @@ public class InternalWindow extends javax.swing.JInternalFrame {
         jMenu2 = new javax.swing.JMenu();
         thresholdMenu = new javax.swing.JMenuItem();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(500, 500));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
@@ -204,13 +205,15 @@ public class InternalWindow extends javax.swing.JInternalFrame {
                 "Exit", 
                 JOptionPane.YES_NO_OPTION);
         
-        DesktopPane desktop = (DesktopPane) this.getDesktopPane();
-            desktop.quitFrames(this.index);
-            
-        try {
-            this.setClosed(true);
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(InternalWindow.class.getName()).log(Level.SEVERE, null, ex);
+        if (res == JOptionPane.YES_OPTION) {
+            DesktopPane desktop = (DesktopPane) this.getDesktopPane();
+                desktop.quitFrames(this.index);
+
+            try {
+                this.setClosed(true);
+            } catch (PropertyVetoException ex) {
+                Logger.getLogger(InternalWindow.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_quitMenuActionPerformed
 
@@ -241,13 +244,15 @@ public class InternalWindow extends javax.swing.JInternalFrame {
                 "Exit", 
                 JOptionPane.YES_NO_OPTION);
         
-        DesktopPane desktop = (DesktopPane) this.getDesktopPane();
-            desktop.quitFrames(this.index);
-            
-        try {
-            this.setClosed(true);
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(InternalWindow.class.getName()).log(Level.SEVERE, null, ex);
+        if (res == JOptionPane.YES_OPTION) {
+            DesktopPane desktop = (DesktopPane) this.getDesktopPane();
+                desktop.quitFrames(this.index);
+
+            try {
+                this.setClosed(true);
+            } catch (PropertyVetoException ex) {
+                Logger.getLogger(InternalWindow.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_formInternalFrameClosing
 

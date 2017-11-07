@@ -43,7 +43,7 @@ public class MainWindow extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("PhotoStation");
         setPreferredSize(new java.awt.Dimension(1400, 1000));
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -143,7 +143,7 @@ public class MainWindow extends javax.swing.JFrame {
                 "Exit", 
                 JOptionPane.YES_NO_OPTION);
         if (res == JOptionPane.YES_OPTION) {
-            dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+            this.dispose();
         }
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
@@ -167,7 +167,7 @@ public class MainWindow extends javax.swing.JFrame {
                 "Exit", 
                 JOptionPane.YES_NO_OPTION);
         if (res == JOptionPane.YES_OPTION) {
-            dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+            this.dispose();
         }
     }//GEN-LAST:event_formWindowClosing
 
