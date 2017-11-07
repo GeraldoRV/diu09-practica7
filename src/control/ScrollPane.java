@@ -7,7 +7,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.swing.BorderFactory;
@@ -17,7 +16,7 @@ import javax.swing.JViewport;
 
 public class ScrollPane extends JScrollPane {
     private ImagePanel panel;
-    private JViewport view;
+    private final JViewport view;
     private final JScrollBar hBar;
     private final JScrollBar vBar;
     private Point origin;
