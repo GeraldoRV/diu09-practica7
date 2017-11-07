@@ -61,6 +61,23 @@ public class InternalWindow extends javax.swing.JInternalFrame {
         thresholdMenu = new javax.swing.JMenuItem();
 
         setPreferredSize(new java.awt.Dimension(500, 500));
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jMenu1.setText("File");
 
@@ -181,6 +198,12 @@ public class InternalWindow extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_closeMenuActionPerformed
 
     private void quitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitMenuActionPerformed
+        int res = JOptionPane.showConfirmDialog(
+                rootPane, 
+                "Are you sure?", 
+                "Exit", 
+                JOptionPane.YES_NO_OPTION);
+        
         DesktopPane desktop = (DesktopPane) this.getDesktopPane();
             desktop.quitFrames(this.index);
             
@@ -210,6 +233,23 @@ public class InternalWindow extends javax.swing.JInternalFrame {
             child.add(internalWindow.getIndex());
         }
     }//GEN-LAST:event_thresholdMenuActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        int res = JOptionPane.showConfirmDialog(
+                rootPane, 
+                "Are you sure?", 
+                "Exit", 
+                JOptionPane.YES_NO_OPTION);
+        
+        DesktopPane desktop = (DesktopPane) this.getDesktopPane();
+            desktop.quitFrames(this.index);
+            
+        try {
+            this.setClosed(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(InternalWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_formInternalFrameClosing
 
     public void changeImage(BufferedImage img) {
         scrollPane.setPanel(img);
