@@ -63,6 +63,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         closeMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
         closeMenuItem.setText("Close Projects");
+        closeMenuItem.setEnabled(false);
         closeMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 closeMenuItemActionPerformed(evt);
@@ -129,6 +130,7 @@ public class MainWindow extends javax.swing.JFrame {
                         JOptionPane.ERROR_MESSAGE);
             } else {
                 desktopPane.openInternalFrame(fc.getSelectedFile());
+                closeMenuItem.setEnabled(true);
             }
         }
     }//GEN-LAST:event_openMenuItemActionPerformed
@@ -146,6 +148,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void closeMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeMenuItemActionPerformed
         desktopPane.closeAllFrames();
+        closeMenuItem.setEnabled(false);
     }//GEN-LAST:event_closeMenuItemActionPerformed
 
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
