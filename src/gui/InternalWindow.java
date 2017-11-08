@@ -7,8 +7,6 @@ import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.beans.PropertyVetoException;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -147,7 +145,6 @@ public class InternalWindow extends javax.swing.JInternalFrame {
         scrollPane.setPanel(file);
         scrollPane.repaint();
         this.setTitle(file.getName());
-        setIndex(0);
     }
 
     private void OpenMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpenMenuActionPerformed
@@ -178,13 +175,13 @@ public class InternalWindow extends javax.swing.JInternalFrame {
 
                 closeMenu.setEnabled(true);
                 thresholdMenu.setEnabled(true);
-                
+
                 this.setTitle(fc.getName(fc.getSelectedFile()));
             }
         }
         DesktopPane desktop = (DesktopPane) this.getDesktopPane();
-            desktop.refreshFrames();
-            
+        desktop.refreshFrames();
+
     }//GEN-LAST:event_OpenMenuActionPerformed
 
     private void closeMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeMenuActionPerformed
@@ -193,19 +190,19 @@ public class InternalWindow extends javax.swing.JInternalFrame {
         thresholdMenu.setEnabled(false);
         this.setTitle("");
         DesktopPane desktop = (DesktopPane) this.getDesktopPane();
-        desktop.closeFrames(index);
+        desktop.closeFrame();
     }//GEN-LAST:event_closeMenuActionPerformed
 
     private void quitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitMenuActionPerformed
         int res = JOptionPane.showConfirmDialog(
-                rootPane, 
-                "Are you sure?", 
-                "Exit", 
+                rootPane,
+                "Are you sure?",
+                "Exit",
                 JOptionPane.YES_NO_OPTION);
-        
+
         if (res == JOptionPane.YES_OPTION) {
             DesktopPane desktop = (DesktopPane) this.getDesktopPane();
-                desktop.quitFrames(this.index);
+            desktop.quitFrame();
 
             try {
                 this.setClosed(true);
@@ -231,20 +228,19 @@ public class InternalWindow extends javax.swing.JInternalFrame {
 
             DesktopPane desktop = (DesktopPane) this.getDesktopPane();
             desktop.openInternalFrame(internalWindow);
-            child.add(internalWindow.getIndex());
         }
     }//GEN-LAST:event_thresholdMenuActionPerformed
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
         int res = JOptionPane.showConfirmDialog(
-                rootPane, 
-                "Are you sure?", 
-                "Exit", 
+                rootPane,
+                "Are you sure?",
+                "Exit",
                 JOptionPane.YES_NO_OPTION);
-        
+
         if (res == JOptionPane.YES_OPTION) {
             DesktopPane desktop = (DesktopPane) this.getDesktopPane();
-                desktop.quitFrames(this.index);
+            desktop.quitFrame();
 
             try {
                 this.setClosed(true);
@@ -260,8 +256,7 @@ public class InternalWindow extends javax.swing.JInternalFrame {
     }
 
     private void setDefaults() {
-        child = new ArrayList();
-        
+
         this.setIconifiable(true);
         this.setMaximizable(true);
         this.setResizable(true);
@@ -392,19 +387,5 @@ public class InternalWindow extends javax.swing.JInternalFrame {
     private javax.swing.JPopupMenu.Separator separatorMenu;
     private javax.swing.JMenuItem thresholdMenu;
     // End of variables declaration//GEN-END:variables
-    private int index;
-    private List<Integer> child;
 
-    public List<Integer> getChild() {
-        return child;
-    }
-
-    public void setIndex(int index) {
-        this.index = index;
-    }
-
-    public int getIndex() {
-        return index;
-    }
-    
 }

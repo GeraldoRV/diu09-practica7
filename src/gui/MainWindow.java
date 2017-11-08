@@ -33,25 +33,24 @@ public class MainWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         desktopPane = new control.DesktopPane();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        menuBar = new javax.swing.JMenuBar();
+        fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
         closeMenuItem = new javax.swing.JMenuItem();
-        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        separator = new javax.swing.JPopupMenu.Separator();
         exitMenuItem = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        hekpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("PhotoStation");
-        setPreferredSize(new java.awt.Dimension(1400, 1000));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
 
-        jMenu1.setText("File");
+        fileMenu.setText("File");
 
         openMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
         openMenuItem.setText("Open Project");
@@ -60,7 +59,7 @@ public class MainWindow extends javax.swing.JFrame {
                 openMenuItemActionPerformed(evt);
             }
         });
-        jMenu1.add(openMenuItem);
+        fileMenu.add(openMenuItem);
 
         closeMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
         closeMenuItem.setText("Close Projects");
@@ -69,8 +68,8 @@ public class MainWindow extends javax.swing.JFrame {
                 closeMenuItemActionPerformed(evt);
             }
         });
-        jMenu1.add(closeMenuItem);
-        jMenu1.add(jSeparator1);
+        fileMenu.add(closeMenuItem);
+        fileMenu.add(separator);
 
         exitMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
         exitMenuItem.setText("Quit");
@@ -79,11 +78,11 @@ public class MainWindow extends javax.swing.JFrame {
                 exitMenuItemActionPerformed(evt);
             }
         });
-        jMenu1.add(exitMenuItem);
+        fileMenu.add(exitMenuItem);
 
-        jMenuBar1.add(jMenu1);
+        menuBar.add(fileMenu);
 
-        jMenu2.setText("Help");
+        hekpMenu.setText("Help");
 
         aboutMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         aboutMenuItem.setText("About...");
@@ -92,11 +91,11 @@ public class MainWindow extends javax.swing.JFrame {
                 aboutMenuItemActionPerformed(evt);
             }
         });
-        jMenu2.add(aboutMenuItem);
+        hekpMenu.add(aboutMenuItem);
 
-        jMenuBar1.add(jMenu2);
+        menuBar.add(hekpMenu);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -129,7 +128,6 @@ public class MainWindow extends javax.swing.JFrame {
                         "Error",
                         JOptionPane.ERROR_MESSAGE);
             } else {
-                // TODO: Esto te lo he añadido para realizar pruebas modificalo si quieres
                 desktopPane.openInternalFrame(fc.getSelectedFile());
             }
         }
@@ -137,9 +135,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
         int res = JOptionPane.showConfirmDialog(
-                rootPane, 
-                "Are you sure?", 
-                "Exit", 
+                rootPane,
+                "Are you sure?",
+                "Exit",
                 JOptionPane.YES_NO_OPTION);
         if (res == JOptionPane.YES_OPTION) {
             this.dispose();
@@ -151,19 +149,19 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_closeMenuItemActionPerformed
 
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
-    JOptionPane.showMessageDialog(
-                    null, 
-                    "This program uses a thresholding technique to make your pics more fancy"
-                    + "\nDeveloped by David Medina & Geraldo Rodrigues", 
-                    "About...", 
-                    JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(
+                null,
+                "This program uses a thresholding technique to make your pics more fancy"
+                + "\nDeveloped by David Medina & Geraldo Rodrigues",
+                "About...",
+                JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_aboutMenuItemActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         int res = JOptionPane.showConfirmDialog(
-                rootPane, 
-                "Are you sure?", 
-                "Exit", 
+                rootPane,
+                "Are you sure?",
+                "Exit",
                 JOptionPane.YES_NO_OPTION);
         if (res == JOptionPane.YES_OPTION) {
             this.dispose();
@@ -281,10 +279,10 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem closeMenuItem;
     private control.DesktopPane desktopPane;
     private javax.swing.JMenuItem exitMenuItem;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JMenu fileMenu;
+    private javax.swing.JMenu hekpMenu;
+    private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
+    private javax.swing.JPopupMenu.Separator separator;
     // End of variables declaration//GEN-END:variables
 }

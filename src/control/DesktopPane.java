@@ -1,42 +1,26 @@
 package control;
 
 import gui.InternalWindow;
-import java.beans.PropertyVetoException;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 
 public class DesktopPane extends JDesktopPane {
 
-    List<InternalWindow> internalWindows;
-    int nVentanas = 0;
-
-    public DesktopPane() {
-        internalWindows = new ArrayList<>();
-    }
+    private int nFrames = 0;
 
     public void openInternalFrame(File file) {
         closeAllFrames();
-        nVentanas = 0;
-        internalWindows.clear();
         InternalWindow internalWindow = new InternalWindow();
         internalWindow.initializeProject(file);
-        this.add(internalWindow);
-        internalWindows.add(internalWindow);
-        nVentanas++;
+        add(internalWindow);
+        nFrames++;
     }
 
     public void openInternalFrame(InternalWindow internalWindow) {
-        internalWindow.setLocation(nVentanas * 40, nVentanas * 10);
-        internalWindow.setIndex(nVentanas);
-        nVentanas++;
+        internalWindow.setLocation(nFrames * 40, nFrames * 10);
+        nFrames++;
         add(internalWindow);
-        internalWindows.add(internalWindow);
-
     }
 
     public void closeAllFrames() {
@@ -44,6 +28,7 @@ public class DesktopPane extends JDesktopPane {
         for (JInternalFrame ventana : ventanas) {
             ventana.dispose();
         }
+        nFrames = 0;
     }
 
     public void refreshFrames() {
@@ -51,27 +36,18 @@ public class DesktopPane extends JDesktopPane {
         for (JInternalFrame ventana : ventanas) {
             if (ventana != this.getSelectedFrame()) {
                 ventana.dispose();
-
             }
         }
+        nFrames = 1;
     }
 
-    public void quitFrames(int index) {
-        internalWindows.get(index).dispose();
-        List<Integer> hijos = internalWindows.get(index).getChild();
-        hijos.forEach((hijo) -> {
-            internalWindows.get(hijo).dispose();
-        });
+    public void quitFrame() {
+        getSelectedFrame().dispose();
+        nFrames--;
     }
 
-    public void closeFrames(int index) {
-        List<Integer> hijos = internalWindows.get(index).getChild();
-        hijos.forEach((Integer hijo) -> {
-            try {
-                internalWindows.get(hijo).setClosed(true);
-            } catch (PropertyVetoException ex) {
-                Logger.getLogger(DesktopPane.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
+    public void closeFrame() {
+        getSelectedFrame().dispose();
+        nFrames--;
     }
 }
