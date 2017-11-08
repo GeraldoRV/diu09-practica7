@@ -45,9 +45,5 @@ public class DesktopPane extends JDesktopPane {
         getSelectedFrame().dispose();
         nFrames--;
     }
-
-    public void closeFrame() {
-        getSelectedFrame().dispose();
-        nFrames--;
-    }
+    
 }
