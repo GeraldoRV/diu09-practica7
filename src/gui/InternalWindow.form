@@ -105,7 +105,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="control.ScrollPane" name="scrollPane">
+    <Container class="gui.ScrollPane" name="scrollPane">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
     </Container>
